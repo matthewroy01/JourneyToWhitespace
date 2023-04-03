@@ -73,6 +73,24 @@ namespace Management
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shift"",
+                    ""type"": ""Button"",
+                    ""id"": ""9de8f6da-43c6-4b09-aa82-10b789b9f919"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CapsLock"",
+                    ""type"": ""Button"",
+                    ""id"": ""1ddd413f-aec2-49f8-ab50-dc3767ecbeba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +192,39 @@ namespace Management
                     ""action"": ""SecondaryFire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b1b00de6-0164-46f6-8769-0fabe75d5639"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ab2dc37-26e3-455e-8f2f-7e45f35fa727"",
+                    ""path"": ""<Keyboard>/rightShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8dfc9dc8-dbe7-4d5d-b593-a6b2c22756b4"",
+                    ""path"": ""<Keyboard>/capsLock"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CapsLock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -187,6 +238,8 @@ namespace Management
             m_Default_MousePosition = m_Default.FindAction("MousePosition", throwIfNotFound: true);
             m_Default_PrimaryFire = m_Default.FindAction("PrimaryFire", throwIfNotFound: true);
             m_Default_SecondaryFire = m_Default.FindAction("SecondaryFire", throwIfNotFound: true);
+            m_Default_Shift = m_Default.FindAction("Shift", throwIfNotFound: true);
+            m_Default_CapsLock = m_Default.FindAction("CapsLock", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -251,6 +304,8 @@ namespace Management
         private readonly InputAction m_Default_MousePosition;
         private readonly InputAction m_Default_PrimaryFire;
         private readonly InputAction m_Default_SecondaryFire;
+        private readonly InputAction m_Default_Shift;
+        private readonly InputAction m_Default_CapsLock;
         public struct DefaultActions
         {
             private @Controls m_Wrapper;
@@ -260,6 +315,8 @@ namespace Management
             public InputAction @MousePosition => m_Wrapper.m_Default_MousePosition;
             public InputAction @PrimaryFire => m_Wrapper.m_Default_PrimaryFire;
             public InputAction @SecondaryFire => m_Wrapper.m_Default_SecondaryFire;
+            public InputAction @Shift => m_Wrapper.m_Default_Shift;
+            public InputAction @CapsLock => m_Wrapper.m_Default_CapsLock;
             public InputActionMap Get() { return m_Wrapper.m_Default; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -284,6 +341,12 @@ namespace Management
                     @SecondaryFire.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSecondaryFire;
                     @SecondaryFire.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSecondaryFire;
                     @SecondaryFire.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSecondaryFire;
+                    @Shift.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnShift;
+                    @Shift.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnShift;
+                    @Shift.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnShift;
+                    @CapsLock.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCapsLock;
+                    @CapsLock.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCapsLock;
+                    @CapsLock.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCapsLock;
                 }
                 m_Wrapper.m_DefaultActionsCallbackInterface = instance;
                 if (instance != null)
@@ -303,6 +366,12 @@ namespace Management
                     @SecondaryFire.started += instance.OnSecondaryFire;
                     @SecondaryFire.performed += instance.OnSecondaryFire;
                     @SecondaryFire.canceled += instance.OnSecondaryFire;
+                    @Shift.started += instance.OnShift;
+                    @Shift.performed += instance.OnShift;
+                    @Shift.canceled += instance.OnShift;
+                    @CapsLock.started += instance.OnCapsLock;
+                    @CapsLock.performed += instance.OnCapsLock;
+                    @CapsLock.canceled += instance.OnCapsLock;
                 }
             }
         }
@@ -314,6 +383,8 @@ namespace Management
             void OnMousePosition(InputAction.CallbackContext context);
             void OnPrimaryFire(InputAction.CallbackContext context);
             void OnSecondaryFire(InputAction.CallbackContext context);
+            void OnShift(InputAction.CallbackContext context);
+            void OnCapsLock(InputAction.CallbackContext context);
         }
     }
 }

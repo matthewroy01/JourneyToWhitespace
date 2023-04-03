@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f812b1ae71b926148b3429f57d995010, type: 3}
   m_Name: Ship_A
   m_EditorClassIdentifier: 
-  _shipName: 
+  _shipName: a
+  _shipType: 1
+  _movement: {fileID: 11400000, guid: 9df1ee2525cfebe42a2cc572ee43ec0c, type: 2}

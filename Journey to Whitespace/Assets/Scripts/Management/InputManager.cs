@@ -11,6 +11,9 @@ namespace Management
         public static Vector2 MousePosition => _mousePosition;
         public static event Action LeftClickPerformed;
         public static event Action RightClickPerformed;
+        public static event Action ShiftEntered;
+        public static event Action ShiftCanceled;
+        public static event Action CapsLockPerformed;
 
         private Controls _controls;
         private static Vector2 _mousePosition;
@@ -51,6 +54,23 @@ namespace Management
                 return;
             
             RightClickPerformed?.Invoke();
+        }
+
+        public void OnShift(InputAction.CallbackContext context)
+        {
+            if (GetContextTypeMet(context, InputContextType.Started))
+                ShiftEntered?.Invoke();
+            
+            if (GetContextTypeMet(context, InputContextType.Canceled))
+                ShiftCanceled?.Invoke();
+        }
+
+        public void OnCapsLock(InputAction.CallbackContext context)
+        {
+            if (!GetContextTypeMet(context, InputContextType.Started))
+                return;
+            
+            CapsLockPerformed?.Invoke();
         }
 
         private bool GetContextTypeMet(InputAction.CallbackContext context, InputContextType inputContextType)

@@ -752,6 +752,7 @@ GameObject:
   - component: {fileID: 1500942236}
   - component: {fileID: 1500942235}
   - component: {fileID: 1500942238}
+  - component: {fileID: 1500942240}
   - component: {fileID: 1500942237}
   - component: {fileID: 1500942239}
   m_Layer: 0
@@ -807,6 +808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shipDefinition: {fileID: 11400000, guid: 8430ee6829b855245821e905e2a51fa5, type: 2}
   _shipMovement: {fileID: 1500942235}
+  _shipCapitalization: {fileID: 1500942240}
 --- !u!50 &1500942237
 Rigidbody2D:
   serializedVersion: 4
@@ -856,6 +858,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1500942240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500942233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3cdc404eae4902a2d7c51d94b845df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lowercase: {fileID: 795236226}
+  _uppercase: {fileID: 1626617722}
 --- !u!1 &1603967280
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,8 +982,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1626617722}
   - {fileID: 795236226}
+  - {fileID: 1626617722}
   m_Father: {fileID: 1603967281}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

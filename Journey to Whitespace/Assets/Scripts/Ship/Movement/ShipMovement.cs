@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
 using MHR.StateMachine;
+using MHRUtil.Interfaces;
 using Ship.Data;
 using Ship.Movement.States;
 
 namespace Ship.Movement
 {
     [RequireComponent(typeof(ShipMovementDefaultState))]
-    public class ShipMovement : MonoBehaviour
+    public class ShipMovement : MonoBehaviour, IUpdatable
     {
         public Rigidbody2D RB => _rb;
         public ShipMovementDefinition ShipMovementDefinition => _shipMovementDefinition;
@@ -29,12 +30,12 @@ namespace Ship.Movement
             _initialDrag = _rb.drag;
         }
 
-        private void Update()
+        public void MyUpdate()
         {
             _stateMachine.CurrentState.ProcessState();
         }
 
-        private void FixedUpdate()
+        public void MyFixedUpdate()
         {
             _stateMachine.CurrentState.ProcessStateFixed();
         }
