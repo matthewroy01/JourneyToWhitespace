@@ -13,15 +13,17 @@ namespace Projectile
         [SerializeField] private Projectile _prefab;
         [SerializeField] private ProjectileDefinition _definition;
         private Pool<Projectile> _pool;
+        private int _extraPoolIndex;
         
         private const int DEFAULT_MAX_PROJECTILES = 30;
 
-        public void Initialize()
+        public void Initialize(Shoot shoot)
         {
-            CreatePool();
+            CreatePool(shoot);
+            AddExtraPools(shoot);
         }
         
-        private void CreatePool()
+        private void CreatePool(Shoot shoot)
         {
             _pool = new Pool<Projectile>();
             
@@ -32,13 +34,29 @@ namespace Projectile
             for (int i = 0; i < primaryAmount; i++)
             {
                 Projectile tmp = Object.Instantiate(_prefab, Vector3.zero, Quaternion.identity);
-                tmp.Initialize(_definition);
+                tmp.Initialize(_definition, _extraPoolIndex, shoot);
                 tmp.Destroyed += OnProjectileDestroyed;
                 tmp.gameObject.SetActive(false);
                 toPool.Add(tmp);
             }
             
             _pool.Initialize(toPool);
+        }
+
+        private void AddExtraPools(Shoot shoot)
+        {
+            if (_definition.DestroyDefinition == null)
+                return;
+            
+            switch (_definition.DestroyDefinition.ProjectileDestroyType)
+            {
+                case ProjectileDestroyType.None:
+                    break;
+                case ProjectileDestroyType.CreateProjectiles:
+                    _extraPoolIndex = shoot.AddExtraProjectileInfo(_definition.DestroyDefinition.DestroyProjectile);
+                    shoot.GetProjectileInfoFromExtraPools(_extraPoolIndex).Initialize(shoot);
+                    break;
+            }
         }
         
         private void OnProjectileDestroyed(Projectile projectile)

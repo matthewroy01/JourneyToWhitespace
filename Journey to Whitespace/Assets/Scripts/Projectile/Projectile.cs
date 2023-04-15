@@ -9,13 +9,19 @@ namespace Projectile
     {
         public event Action<Projectile> Destroyed;
 
+        public string CustomSoundName => _definition.CustomSoundName;
+
         [SerializeField] private Rigidbody2D _rb;
         private ProjectileDefinition _definition;
+        private int _extraPoolIndex;
+        private Shoot _shoot;
         private Coroutine _destroyCoroutine;
 
-        public void Initialize(ProjectileDefinition definition)
+        public void Initialize(ProjectileDefinition definition, int extraProjectileIndex, Shoot shoot)
         {
             _definition = definition;
+            _extraPoolIndex = extraProjectileIndex;
+            _shoot = shoot;
         }
 
         public void Move(Vector2 position, Vector2 direction)
@@ -36,7 +42,10 @@ namespace Projectile
         private void SetVelocity(Vector2 direction)
         {
             _rb.velocity = direction * _definition.ForwardSpeed;
-            transform.up = direction;
+            if (_definition.FaceMovementDirection)
+            {
+                transform.up = direction;
+            }
         }
 
         private IEnumerator DestroyRoutine()
@@ -50,8 +59,29 @@ namespace Projectile
                 yield return null;
             }
             
+            HandleDestroy();
+            
             Destroyed?.Invoke(this);
             gameObject.SetActive(false);
+        }
+
+        private void HandleDestroy()
+        {
+            // TODO: add universal destroy vfx?
+
+            if (_definition.DestroyDefinition == null)
+                return;
+            
+            switch (_definition.DestroyDefinition.ProjectileDestroyType)
+            {
+                case ProjectileDestroyType.None:
+                    break;
+                case ProjectileDestroyType.CreateProjectiles:
+                    _shoot.FireExtraProjectile(_extraPoolIndex, transform);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

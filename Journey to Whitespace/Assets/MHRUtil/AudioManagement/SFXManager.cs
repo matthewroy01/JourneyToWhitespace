@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MHR.GameObjectManagement;
+using UnityEditorInternal;
 
 namespace AudioManagement.SFX
 {
@@ -19,11 +20,11 @@ namespace AudioManagement.SFX
 
         private void OnEnable()
         {
-            if (_instance == null)
+            /*if (_instance == null)
             {
-                GameObjectUtility.DontDestroyOnLoad<SFXManager>(this);
+                GameObjectUtility.DontDestroyOnLoad<SFXManager>(this);*/
                 _instance = this;
-            }
+            //}
 
             AddAudioSources(false);
             AddAudioSources(true);
@@ -36,7 +37,17 @@ namespace AudioManagement.SFX
             for (int i = 0; i < max; ++i)
             {
                 AudioSource tmp = gameObject.AddComponent<AudioSource>();
+                InternalEditorUtility.SetIsInspectorExpanded(tmp, false);
                 tmp.loop = looping;
+                
+                if (looping)
+                {
+                    _loopingAudioSources.Add(tmp);
+                }
+                else
+                {
+                    _audioSources.Add(tmp);
+                }
             }
         }
 
