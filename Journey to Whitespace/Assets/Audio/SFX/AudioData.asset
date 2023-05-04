@@ -25,3 +25,15 @@ MonoBehaviour:
     _minPitch: 0.9
     _maxPitch: 1.1
     _letFinishIfLooping: 0
+  - _name: Enemy Take Damage
+    _clip: {fileID: 8300000, guid: 5e273b1f7a01a5d4eaa3ad54f641d379, type: 3}
+    _volume: 0.4
+    _minPitch: 0.9
+    _maxPitch: 1.1
+    _letFinishIfLooping: 0
+  - _name: Fire
+    _clip: {fileID: 8300000, guid: 82e6108b87163f54cadb021a8c617a0b, type: 3}
+    _volume: 0.4
+    _minPitch: 0.9
+    _maxPitch: 1.1
+    _letFinishIfLooping: 0

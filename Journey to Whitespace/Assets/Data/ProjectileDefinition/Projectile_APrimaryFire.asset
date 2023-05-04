@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93573f847daf2ef4e860c02a487ec4f0, type: 3}
   m_Name: Projectile_APrimaryFire
   m_EditorClassIdentifier: 
+  _prefab: {fileID: -8438025375520841145, guid: a9a0cb8642907e5458232bd9426a3773, type: 3}
   _damage: 3
   _forwardSpeed: 20
   _faceMovementDirection: 1
@@ -22,3 +23,4 @@ MonoBehaviour:
   _hasCooldown: 1
   _cooldown: 0.1
   _destroyDefinition: {fileID: 0}
+  _customSoundName: 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93573f847daf2ef4e860c02a487ec4f0, type: 3}
   m_Name: Projectile_ASecondaryFireExplosion
   m_EditorClassIdentifier: 
+  _prefab: {fileID: -8438025375520841145, guid: 91bc110cebce66b4bba6c6d54418dbe9, type: 3}
   _damage: 10
   _forwardSpeed: 0
   _faceMovementDirection: 0

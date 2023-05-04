@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ae922fb1fba688d4c9710cdbf32c8403
+guid: 48daefb376b5f034292e0c0204e55eec
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -107,70 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Letters_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d60e25b07aa47ac4aa256db3d044fed3
-      internalID: 671509057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Letters_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4d4078eee51b35f48be39ec0059374c5
-      internalID: -1873493966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Letters_2
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9960dee129a4f20468d83026444adb48
-      internalID: -1476202803
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Letters_3
+      name: Punctuation_0
       rect:
         serializedVersion: 2
         x: 0
@@ -184,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4492319b08f7351469639e9d4b391089
-      internalID: 1690003454
+      spriteID: 44f6fe69d8188b448b3bae9b64d421da
+      internalID: 595224127
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Letters_4
+      name: Punctuation_1
       rect:
         serializedVersion: 2
         x: 32
@@ -205,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8c188f09d918c344ae9eca875666332
-      internalID: 1382297896
+      spriteID: 1d3bc6de17f9f834ab06752379e17067
+      internalID: -1536889703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Letters_5
+      name: Punctuation_2
       rect:
         serializedVersion: 2
         x: 64
@@ -226,35 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 121d0b5498ff5034e8ddd8a059b59c6a
-      internalID: 342721927
+      spriteID: c6cc340c8e5dce34a90cfbd00e0636a6
+      internalID: -726616730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Letters_6
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ef406a5629275ad4ea785ff4d3ff1fb3
-      internalID: 1993445631
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Letters_7
+      name: Punctuation_3
       rect:
         serializedVersion: 2
         x: 0
@@ -268,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccb14dc8a25a4cf499784a24d735759b
-      internalID: 457797062
+      spriteID: cca7beb723ba7704fb4fd5f1a43938fe
+      internalID: 1981579743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Letters_8
+      name: Punctuation_4
       rect:
         serializedVersion: 2
         x: 32
@@ -289,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bac54d0b18c91c4d8fd668a3a9c1d06
-      internalID: 208645727
+      spriteID: 5e465150ca7f66b488c1a2176ff26b4f
+      internalID: 1758392027
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Letters_9
+      name: Punctuation_5
       rect:
         serializedVersion: 2
         x: 64
@@ -310,29 +226,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65f3f827a5ef69941924630af3b8f549
-      internalID: -636627234
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Letters_10
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42bf4c9065ca8c94fbc2c1438fed3022
-      internalID: 1085643417
+      spriteID: 48dd7f386ef57cc459cd93e6f09c406f
+      internalID: 1677613116
       vertices: []
       indices: 
       edges: []
@@ -340,7 +235,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: faec09d21edc40a4dbb8d7ba329b3250
+    spriteID: 7ecec29d606ae0748b097ddc7f047dc9
     internalID: 0
     vertices: []
     indices: 
@@ -348,17 +243,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Letters_9: -636627234
-      Letters_5: 342721927
-      Letters_6: 1993445631
-      Letters_0: 671509057
-      Letters_2: -1476202803
-      Letters_10: 1085643417
-      Letters_1: -1873493966
-      Letters_4: 1382297896
-      Letters_7: 457797062
-      Letters_3: 1690003454
-      Letters_8: 208645727
+      Punctuation_4: 1758392027
+      Punctuation_5: 1677613116
+      Punctuation_0: 595224127
+      Punctuation_2: -726616730
+      Punctuation_1: -1536889703
+      Punctuation_3: 1981579743
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

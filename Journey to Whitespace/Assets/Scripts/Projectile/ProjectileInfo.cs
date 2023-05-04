@@ -10,8 +10,8 @@ namespace Projectile
     [Serializable]
     public class ProjectileInfo
     {
-        [SerializeField] private Projectile _prefab;
         [SerializeField] private ProjectileDefinition _definition;
+        private Projectile _prefab => _definition.Prefab;
         private Pool<Projectile> _pool;
         private int _extraPoolIndex;
         

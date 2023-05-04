@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using HealthAndDamage;
 using Projectile.Data;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Projectile
         public string CustomSoundName => _definition.CustomSoundName;
 
         [SerializeField] private Rigidbody2D _rb;
+        [SerializeField] private DamageEntity _damageEntity;
         private ProjectileDefinition _definition;
         private int _extraPoolIndex;
         private Shoot _shoot;
@@ -22,6 +24,11 @@ namespace Projectile
             _definition = definition;
             _extraPoolIndex = extraProjectileIndex;
             _shoot = shoot;
+
+            if (_damageEntity == null)
+                return;
+            
+            _damageEntity.Initialize(_definition.Damage, _definition.TargetType);
         }
 
         public void Move(Vector2 position, Vector2 direction)
@@ -29,7 +36,8 @@ namespace Projectile
             gameObject.SetActive(true);
 
             transform.position = position;
-            
+
+            direction = direction.normalized;
             SetVelocity(direction);
 
             if (_destroyCoroutine != null)

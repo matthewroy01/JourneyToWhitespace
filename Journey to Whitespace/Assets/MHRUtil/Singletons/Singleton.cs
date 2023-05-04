@@ -1,13 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour
+namespace MHRUtil.Singletons
 {
-    public static T Instance;
-
-    protected virtual void Awake()
+    public class Singleton<T> : MonoBehaviour where T : Object
     {
-        Instance = GetComponent<T>();
+        public static T Instance;
+
+        protected virtual void Awake()
+        {
+            if (FindObjectsOfType<T>().Length > 1)
+            {
+                Destroy(this);
+                return;
+            }
+        
+            Instance = GetComponent<T>();
+        }
     }
 }

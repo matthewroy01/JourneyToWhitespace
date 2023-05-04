@@ -10,54 +10,13 @@ namespace Projectile
 {
     public class Shoot : MonoBehaviour
     {
-        [Header("Projectiles")]
-        [SerializeField] private ProjectileInfo _primary;
-        [SerializeField] private ProjectileInfo _secondary;
         private readonly List<ProjectileInfo> _extraProjectileInfo = new();
 
         private Coroutine _muzzleFlareRoutine;
 
-        private void Awake()
+        public void Fire(ProjectileInfo projectileInfo)
         {
-            InitializeProjectiles();
-        }
-        
-        private void OnEnable()
-        {
-            InputManager.LeftClickPerformed += OnLeftClickPerformed;
-            InputManager.RightClickPerformed += OnRightClickPerformed;
-        }
-
-        private void OnDisable()
-        {
-            InputManager.LeftClickPerformed -= OnLeftClickPerformed;
-            InputManager.RightClickPerformed -= OnRightClickPerformed;
-        }
-
-        private void OnLeftClickPerformed()
-        {
-            PrimaryFire();
-        }
-
-        private void OnRightClickPerformed()
-        {
-            SecondaryFire();
-        }
-
-        private void InitializeProjectiles()
-        {
-            _primary.Initialize(this);
-            _secondary.Initialize(this);
-        }
-
-        private void PrimaryFire()
-        {
-            Fire(_primary.GetProjectile(), transform);
-        }
-
-        private void SecondaryFire()
-        {
-            Fire(_secondary.GetProjectile(), transform);
+            Fire(projectileInfo.GetProjectile(), transform);
         }
 
         private void Fire(Projectile projectile, Transform t)

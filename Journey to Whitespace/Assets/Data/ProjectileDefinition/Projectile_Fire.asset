@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93573f847daf2ef4e860c02a487ec4f0, type: 3}
-  m_Name: Projectile_ASecondaryFire
+  m_Name: Projectile_Fire
   m_EditorClassIdentifier: 
-  _prefab: {fileID: -8438025375520841145, guid: 50a6a0f7b2284e342bd2457712c4e5d3, type: 3}
-  _damage: 0
-  _forwardSpeed: 10
+  _prefab: {fileID: 3226234571432142208, guid: 19f8ae92103b7ac40b9f3d75a788947f, type: 3}
+  _damage: 1
+  _forwardSpeed: 15
   _faceMovementDirection: 0
-  _lifetimeDuration: 1
-  _targetType: 0
-  _limitNumberOnScreen: 1
-  _maxNumberOnScreen: 1
-  _hasCooldown: 1
-  _cooldown: 1
-  _destroyDefinition: {fileID: 11400000, guid: 3947cc054e0c28445951827a0d357a3b, type: 2}
-  _customSoundName: 
+  _lifetimeDuration: 3
+  _targetType: 2
+  _limitNumberOnScreen: 0
+  _maxNumberOnScreen: 0
+  _hasCooldown: 0
+  _cooldown: 0
+  _destroyDefinition: {fileID: 0}
+  _customSoundName: Fire

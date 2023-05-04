@@ -1,6 +1,6 @@
-﻿namespace Projectile.Data
+﻿namespace HealthAndDamage
 {
-    public enum ProjectileTargetType
+    public enum DamageTargetType
     {
         All = 0,
         Enemy = 1,

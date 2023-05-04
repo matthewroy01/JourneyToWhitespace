@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5320873228730867618}
   - component: {fileID: -8438025375520841145}
+  - component: {fileID: 4359642726799559021}
+  - component: {fileID: 905826093273294018}
   - component: {fileID: 854401781850589225}
   m_Layer: 0
   m_Name: Projectile_AShot
@@ -47,6 +49,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 854401781850589225}
+  _damageEntity: {fileID: 4359642726799559021}
+--- !u!114 &4359642726799559021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5320873228730867619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4971062f91ff0654da4dc74958deff46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
+  _damageTargetType: 0
+--- !u!58 &905826093273294018
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5320873228730867619}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25
 --- !u!50 &854401781850589225
 Rigidbody2D:
   serializedVersion: 4
@@ -66,7 +99,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &5320873229459367690
 GameObject:
