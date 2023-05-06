@@ -10,7 +10,10 @@ namespace Projectile
     [Serializable]
     public class ProjectileInfo
     {
+        public ProjectileDirectionDefinition DirectionDefinition => _directionDefinition;
+        
         [SerializeField] private ProjectileDefinition _definition;
+        [SerializeField] private ProjectileDirectionDefinition _directionDefinition;
         private Projectile _prefab => _definition.Prefab;
         private Pool<Projectile> _pool;
         private int _extraPoolIndex;

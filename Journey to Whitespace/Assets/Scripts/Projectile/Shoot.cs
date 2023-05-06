@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using AudioManagement.SFX;
 using DG.Tweening;
 using Management;
 using MHRUtil.DOTween.Transform;
+using Projectile.Data;
 using UnityEngine;
 
 namespace Projectile
@@ -14,17 +16,19 @@ namespace Projectile
 
         private Coroutine _muzzleFlareRoutine;
 
-        public void Fire(ProjectileInfo projectileInfo)
+        public void Fire(ProjectileInfo projectileInfo, Transform sourceTransform = null, Vector2 customDirection = default)
         {
-            Fire(projectileInfo.GetProjectile(), transform);
-        }
-
-        private void Fire(Projectile projectile, Transform t)
-        {
+            Projectile projectile = projectileInfo.GetProjectile();
+            
             if (projectile == null)
                 return;
+
+            if (sourceTransform == null)
+            {
+                sourceTransform = transform;
+            }
             
-            projectile.Move(t.position, t.up);
+            projectile.Move(sourceTransform.position, GetDirection(projectileInfo, customDirection));
 
             SFXManager.Instance.QueueSound(string.IsNullOrEmpty(projectile.CustomSoundName) ? "Shoot" : projectile.CustomSoundName);
         }
@@ -40,11 +44,35 @@ namespace Projectile
             return _extraProjectileInfo[index];
         }
 
-        public void FireExtraProjectile(int index, Transform t)
+        public void FireExtraProjectile(int index, Transform sourceTransform = null, Vector2 customDirection = default)
         {
-            Projectile projectile = GetProjectileInfoFromExtraPools(index).GetProjectile();
+            ProjectileInfo projectileInfo = GetProjectileInfoFromExtraPools(index);
 
-            Fire(projectile, t);
+            if (sourceTransform == null)
+            {
+                sourceTransform = transform;
+            }
+
+            Fire(projectileInfo, sourceTransform, customDirection);
+        }
+
+        private Vector2 GetDirection(ProjectileInfo projectileInfo, Vector2 customDirection = default)
+        {
+            switch (projectileInfo.DirectionDefinition.ProjectileDirectionType)
+            {
+                case ProjectileDirectionType.Up:
+                    return transform.up;
+                case ProjectileDirectionType.Custom:
+                    return customDirection;
+                case ProjectileDirectionType.Down:
+                    return transform.up * -1.0f;
+                case ProjectileDirectionType.Left:
+                    return transform.right * -1.0f;
+                case ProjectileDirectionType.Right:
+                    return transform.right;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

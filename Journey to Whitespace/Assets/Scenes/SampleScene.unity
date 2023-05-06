@@ -1441,6 +1441,9 @@ MonoBehaviour:
   _shoot: {fileID: 849900126}
   _projectile:
     _definition: {fileID: 11400000, guid: 3dca4e7d759290846bf5b21037cbae29, type: 2}
+    _directionDefinition:
+      _projectileDirectionType: 1
+      _relativeTransform: {fileID: 0}
   _moveAway: {fileID: 849900125}
   _fire: {fileID: 849900124}
 --- !u!114 &849900123
@@ -2076,8 +2079,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _primary:
     _definition: {fileID: 11400000, guid: 5261d192a6179c640a65380ac6c6d6c6, type: 2}
+    _directionDefinition:
+      _projectileDirectionType: 0
+      _relativeTransform: {fileID: 0}
   _secondary:
     _definition: {fileID: 11400000, guid: f042e4a9a9c117648b84b9ab4e8cb44c, type: 2}
+    _directionDefinition:
+      _projectileDirectionType: 0
+      _relativeTransform: {fileID: 1325264795}
   _shoot: {fileID: 1325264797}
 --- !u!1 &1423761750
 GameObject:

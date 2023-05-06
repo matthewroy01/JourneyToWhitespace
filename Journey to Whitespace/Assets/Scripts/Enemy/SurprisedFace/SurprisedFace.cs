@@ -54,7 +54,7 @@ namespace Enemy.SurprisedFace
 
         private void OnGoodToFire()
         {
-            Fire(_projectile.GetProjectile(), _openMouth.transform);   
+            Fire();   
         }
 
         private void OnDoneShooting()
@@ -109,29 +109,9 @@ namespace Enemy.SurprisedFace
             _closedRightEye.SetActive(false);
         }
         
-        private void Fire(Projectile.Projectile projectile, Transform t)
+        private void Fire()
         {
-            if (projectile == null)
-                return;
-            
-            projectile.Move(t.position, PlayerTransform.position - transform.position);
-
-            SFXManager.Instance.QueueSound(string.IsNullOrEmpty(projectile.CustomSoundName) ? "Shoot" : projectile.CustomSoundName);
-        }
-
-        public int AddExtraProjectileInfo(ProjectileInfo projectileInfo)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public ProjectileInfo GetProjectileInfoFromExtraPools(int index)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void FireExtraProjectile(int index, Transform t)
-        {
-            throw new System.NotImplementedException();
+            _shoot.Fire(_projectile, null, PlayerTransform.position - transform.position);
         }
     }
 }
