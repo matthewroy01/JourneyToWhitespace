@@ -16,19 +16,20 @@ namespace Projectile
 
         private Coroutine _muzzleFlareRoutine;
 
-        public void Fire(ProjectileInfo projectileInfo, Transform sourceTransform = null, Vector2 customDirection = default)
+        public void Fire(ProjectileInfo projectileInfo, FireParams fireParams = null)
         {
+            fireParams ??= new FireParams();
+            
             Projectile projectile = projectileInfo.GetProjectile();
             
             if (projectile == null)
                 return;
 
-            if (sourceTransform == null)
-            {
-                sourceTransform = transform;
-            }
-            
-            projectile.Move(sourceTransform.position, GetDirection(projectileInfo, customDirection));
+            projectile.transform.localScale = Vector3.one * fireParams.ScaleMultiplier;
+
+            Transform sourceTransform = fireParams.SourceTransform == null ? transform : fireParams.SourceTransform;
+
+            projectile.Move(sourceTransform.position, GetDirection(projectileInfo, fireParams.CustomDirection), fireParams);
 
             SFXManager.Instance.QueueSound(string.IsNullOrEmpty(projectile.CustomSoundName) ? "Shoot" : projectile.CustomSoundName);
         }
@@ -44,16 +45,11 @@ namespace Projectile
             return _extraProjectileInfo[index];
         }
 
-        public void FireExtraProjectile(int index, Transform sourceTransform = null, Vector2 customDirection = default)
+        public void FireExtraProjectile(int index, FireParams fireParams)
         {
             ProjectileInfo projectileInfo = GetProjectileInfoFromExtraPools(index);
-
-            if (sourceTransform == null)
-            {
-                sourceTransform = transform;
-            }
-
-            Fire(projectileInfo, sourceTransform, customDirection);
+            
+            Fire(projectileInfo, fireParams);
         }
 
         private Vector2 GetDirection(ProjectileInfo projectileInfo, Vector2 customDirection = default)

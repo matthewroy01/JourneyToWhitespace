@@ -21,6 +21,7 @@ namespace Projectile
         private Shoot _shoot;
         private Coroutine _destroyCoroutine;
         private bool _reachedZeroHealth;
+        private FireParams _fireParams;
 
         private void OnEnable()
         {
@@ -53,8 +54,6 @@ namespace Projectile
             if (_healthEntity == null)
                 return;
             
-            Debug.Log("reached zero health, health was " + _healthEntity.CurrentHealth);
-
             _healthEntity.TakeDamage(1);
         }
 
@@ -84,8 +83,9 @@ namespace Projectile
             }
         }
 
-        public void Move(Vector2 position, Vector2 direction)
+        public void Move(Vector2 position, Vector2 direction, FireParams fireParams)
         {
+            _fireParams = fireParams;
             gameObject.SetActive(true);
 
             transform.position = position;
@@ -159,7 +159,8 @@ namespace Projectile
                 case ProjectileDestroyType.None:
                     break;
                 case ProjectileDestroyType.CreateProjectiles:
-                    _shoot.FireExtraProjectile(_extraPoolIndex, transform);
+                    _fireParams.SourceTransform = transform;
+                    _shoot.FireExtraProjectile(_extraPoolIndex, _fireParams);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

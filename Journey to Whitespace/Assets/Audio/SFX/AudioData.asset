@@ -37,3 +37,9 @@ MonoBehaviour:
     _minPitch: 0.9
     _maxPitch: 1.1
     _letFinishIfLooping: 0
+  - _name: Charge
+    _clip: {fileID: 8300000, guid: 4f1cea88ab5a18142abe19dba2faf7fb, type: 3}
+    _volume: 0.4
+    _minPitch: 0.9
+    _maxPitch: 1.1
+    _letFinishIfLooping: 0

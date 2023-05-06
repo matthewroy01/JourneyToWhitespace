@@ -3,6 +3,7 @@ using AudioManagement.SFX;
 using Enemy.States;
 using MHR.StateMachine;
 using Projectile;
+using Projectile.Data;
 using UnityEngine;
 
 namespace Enemy.SurprisedFace
@@ -52,9 +53,9 @@ namespace Enemy.SurprisedFace
             _openMouth.SetActive(true);
         }
 
-        private void OnGoodToFire()
+        private void OnGoodToFire(float scaleMultiplier)
         {
-            Fire();   
+            Fire(scaleMultiplier);
         }
 
         private void OnDoneShooting()
@@ -109,9 +110,15 @@ namespace Enemy.SurprisedFace
             _closedRightEye.SetActive(false);
         }
         
-        private void Fire()
+        private void Fire(float scaleMultiplier)
         {
-            _shoot.Fire(_projectile, null, PlayerTransform.position - transform.position);
+            FireParams fireParams = new FireParams
+            {
+                CustomDirection = PlayerTransform.position - transform.position,
+                ScaleMultiplier = scaleMultiplier
+            };
+
+            _shoot.Fire(_projectile, fireParams);
         }
     }
 }

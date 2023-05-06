@@ -1,4 +1,5 @@
 ﻿using System;
+using AudioManagement.SFX;
 using UnityEngine;
 
 namespace Enemy.States
@@ -11,6 +12,7 @@ namespace Enemy.States
         [SerializeField] private float _chargeDuration;
         [SerializeField] private float _acceleration;
         [SerializeField] private float _speed;
+        [SerializeField] private ParticleSystem _particleSystem;
         private float _timer;
         private bool _charging = false;
         private Vector2 _targetDirection;
@@ -22,7 +24,10 @@ namespace Enemy.States
             Enemy.RB.drag = 5.0f;
         }
 
-        public override void ExitState() { }
+        public override void ExitState()
+        {
+            _particleSystem.Stop();
+        }
 
         public override void ProcessState()
         {
@@ -48,6 +53,11 @@ namespace Enemy.States
                 Enemy.RB.drag = 1.0f;
                 _targetDirection = (Enemy.PlayerTransform.position - transform.position).normalized;
                 _timer = 0.0f;
+                
+                _particleSystem.transform.up = _targetDirection;
+                _particleSystem.Play();
+                
+                SFXManager.Instance.QueueSound("Charge");
             }
         }
 

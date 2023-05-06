@@ -5,7 +5,7 @@ namespace Enemy.States
 {
     public class SurprisedFace_Fire : EnemyState
     {
-        public event Action GoodToFire;
+        public event Action<float> GoodToFire;
         public event Action DoneShooting;
         
         [SerializeField] private float _windupDuration;
@@ -40,7 +40,7 @@ namespace Enemy.States
                     return;
                 }
                 
-                GoodToFire?.Invoke();
+                GoodToFire?.Invoke(Mathf.Max(1.5f - (0.25f * _shotCounter), 0.75f));
                 _timer = 0.0f;
                 _shotCounter++;
             }

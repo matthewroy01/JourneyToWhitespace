@@ -1,4 +1,5 @@
 ﻿using Management;
+using Projectile.Data;
 using UnityEngine;
 
 namespace Projectile
@@ -34,12 +35,12 @@ namespace Projectile
 
         private void OnLeftClickPerformed()
         {
-            _shoot.Fire(_primary);
+            _shoot.Fire(_primary, new FireParams());
         }
 
         private void OnRightClickPerformed()
         {
-            _shoot.Fire(_secondary);
+            _shoot.Fire(_secondary, new FireParams());
         }
     }
 }
