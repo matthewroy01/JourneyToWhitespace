@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 namespace HealthAndDamage
 {
     public class DamageEntity : MonoBehaviour
     {
+        public event Action DealtDamage;
+        
         public int Damage => _damage;
         public DamageTargetType DamageTargetType => _damageTargetType;
         public HealthEntity Source => _source;
@@ -22,6 +25,11 @@ namespace HealthAndDamage
             _damage = damage;
             _damageTargetType = damageTargetType;
             _source = source;
+        }
+
+        public void TellDealtDamage()
+        {
+            DealtDamage?.Invoke();
         }
     }
 }

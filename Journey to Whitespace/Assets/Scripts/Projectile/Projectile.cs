@@ -14,10 +14,63 @@ namespace Projectile
 
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private DamageEntity _damageEntity;
+        [SerializeField] private HealthEntity _healthEntity;
+        [SerializeField] private ParticleSystem _hitParticleSystem;
         private ProjectileDefinition _definition;
         private int _extraPoolIndex;
         private Shoot _shoot;
         private Coroutine _destroyCoroutine;
+        private bool _reachedZeroHealth;
+
+        private void OnEnable()
+        {
+            if (_healthEntity != null)
+            {
+                _healthEntity.ReachedZeroHealth += OnReachedZeroHealth;
+            }
+
+            if (_damageEntity != null)
+            {
+                _damageEntity.DealtDamage += OnDealtDamage;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (_healthEntity != null)
+            {
+                _healthEntity.ReachedZeroHealth -= OnReachedZeroHealth;
+            }
+
+            if (_damageEntity != null)
+            {
+                _damageEntity.DealtDamage -= OnDealtDamage;
+            }
+        }
+
+        private void OnDealtDamage()
+        {
+            if (_healthEntity == null)
+                return;
+            
+            Debug.Log("reached zero health, health was " + _healthEntity.CurrentHealth);
+
+            _healthEntity.TakeDamage(1);
+        }
+
+        private void Update()
+        {
+            if (!_reachedZeroHealth)
+                return;
+
+            DiedFromHittingSomething();
+            _reachedZeroHealth = false;
+        }
+
+        private void OnReachedZeroHealth()
+        {
+            _reachedZeroHealth = true;
+        }
 
         public void Initialize(ProjectileDefinition definition, int extraProjectileIndex, Shoot shoot)
         {
@@ -25,10 +78,10 @@ namespace Projectile
             _extraPoolIndex = extraProjectileIndex;
             _shoot = shoot;
 
-            if (_damageEntity == null)
-                return;
-            
-            _damageEntity.Initialize(_definition.Damage, _definition.TargetType);
+            if (_damageEntity != null)
+            {
+                _damageEntity.Initialize(_definition.Damage, _definition.TargetType);
+            }
         }
 
         public void Move(Vector2 position, Vector2 direction)
@@ -56,6 +109,12 @@ namespace Projectile
             }
         }
 
+        private void DiedFromHittingSomething()
+        {
+            Instantiate(_hitParticleSystem, transform.position, Quaternion.identity);
+            DestroyImmediately();
+        }
+        
         private IEnumerator DestroyRoutine()
         {
             // TODO: keep track of when projectile goes off-screen
@@ -73,9 +132,24 @@ namespace Projectile
             gameObject.SetActive(false);
         }
 
+        private void DestroyImmediately()
+        {
+            StopCoroutine(_destroyCoroutine);
+            
+            HandleDestroy();
+            
+            Destroyed?.Invoke(this);
+            gameObject.SetActive(false);
+        }
+
         private void HandleDestroy()
         {
             // TODO: add universal destroy vfx?
+            
+            if (_healthEntity != null)
+            {
+                _healthEntity.RestoreAllHealth();
+            }
 
             if (_definition.DestroyDefinition == null)
                 return;

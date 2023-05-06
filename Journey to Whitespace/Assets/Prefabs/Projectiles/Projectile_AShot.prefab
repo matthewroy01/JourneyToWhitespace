@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5320873228730867618}
   - component: {fileID: -8438025375520841145}
+  - component: {fileID: 2359946043536297872}
   - component: {fileID: 4359642726799559021}
   - component: {fileID: 905826093273294018}
   - component: {fileID: 854401781850589225}
@@ -50,6 +51,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 854401781850589225}
   _damageEntity: {fileID: 4359642726799559021}
+  _healthEntity: {fileID: 2359946043536297872}
+  _hitParticleSystem: {fileID: 8610422292443506488, guid: 5a080a630b7877b42a60da9a1cd3f8e7, type: 3}
+--- !u!114 &2359946043536297872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5320873228730867619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf62dae6e80e4ba40a08b771904f6322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 1
+  _healthTargetType: 4
 --- !u!114 &4359642726799559021
 MonoBehaviour:
   m_ObjectHideFlags: 0

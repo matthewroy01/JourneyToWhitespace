@@ -5,6 +5,7 @@
         None = 0,
         Enemy = 1,
         Player = 2,
-        Structure = 3
+        Structure = 3,
+        Projectile = 4,
     }
 }

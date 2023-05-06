@@ -10,6 +10,8 @@ namespace HealthAndDamage
         public event Action TookZeroDamage;
         public event Action ReachedZeroHealth;
 
+        public int CurrentHealth => _currentHealth;
+
         [SerializeField] private int _maxHealth = 1;
         [SerializeField] private HealthTargetType _healthTargetType;
         //[SerializeField] private LayerMask _damageLayerMask;
@@ -46,17 +48,33 @@ namespace HealthAndDamage
                     TakeDamage(damageEntity.Damage);
                     break;
                 case HealthTargetType.Enemy:
-                    if (damageTargetType is DamageTargetType.All or DamageTargetType.Enemy or DamageTargetType.EnemyAndPlayer or DamageTargetType.EnemyAndStructure)
+                    if (damageTargetType is DamageTargetType.All or DamageTargetType.Enemy
+                        or DamageTargetType.EnemyAndPlayer or DamageTargetType.EnemyAndStructure)
+                    {
                         TakeDamage(damageEntity.Damage);
+                        damageEntity.TellDealtDamage();
+                    }
                     break;
                 case HealthTargetType.Player:
-                    if (damageTargetType is DamageTargetType.All or DamageTargetType.Player or DamageTargetType.EnemyAndPlayer or DamageTargetType.PlayerAndStructure)
+                    if (damageTargetType is DamageTargetType.All or DamageTargetType.Player
+                        or DamageTargetType.EnemyAndPlayer or DamageTargetType.PlayerAndStructure)
+                    {
                         TakeDamage(damageEntity.Damage);
+                        damageEntity.TellDealtDamage();
+                    }
                     break;
                 case HealthTargetType.Structure:
-                    if (damageTargetType is DamageTargetType.All or DamageTargetType.Structure or DamageTargetType.EnemyAndStructure or DamageTargetType.PlayerAndStructure)
+                    if (damageTargetType is DamageTargetType.All or DamageTargetType.Structure
+                        or DamageTargetType.EnemyAndStructure or DamageTargetType.PlayerAndStructure)
+                    {
                         TakeDamage(damageEntity.Damage);
+                        damageEntity.TellDealtDamage();
+                    }
                     break;
+                case HealthTargetType.Projectile:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -68,6 +86,11 @@ namespace HealthAndDamage
         public void RestoreHealth(int amount)
         {
             AdjustHealth(amount);
+        }
+
+        public void RestoreAllHealth()
+        {
+            RestoreHealth(_maxHealth - _currentHealth);
         }
 
         private void AdjustHealth(int amount)
@@ -85,7 +108,7 @@ namespace HealthAndDamage
             }
 
             // taking damage and reaching zero
-            if (_currentHealth + amount < 0)
+            if (_currentHealth + amount <= 0)
             {
                 if (_currentHealth > 0)
                 {
