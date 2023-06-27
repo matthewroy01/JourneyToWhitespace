@@ -17,7 +17,7 @@ MonoBehaviour:
   _forwardSpeed: 20
   _faceMovementDirection: 1
   _lifetimeDuration: 1
-  _targetType: 0
+  _targetType: 5
   _limitNumberOnScreen: 1
   _maxNumberOnScreen: 10
   _hasCooldown: 1

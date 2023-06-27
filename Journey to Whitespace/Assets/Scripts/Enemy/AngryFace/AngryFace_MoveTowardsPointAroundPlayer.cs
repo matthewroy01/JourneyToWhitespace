@@ -2,7 +2,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Enemy.States
+namespace Enemy.AngryFace
 {
     public class AngryFace_MoveTowardsPointAroundPlayer : EnemyState
     {

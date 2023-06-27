@@ -107,7 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 595224127, guid: 48daefb376b5f034292e0c0204e55eec, type: 3}
+  m_Sprite: {fileID: 1758392027, guid: 48daefb376b5f034292e0c0204e55eec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -275,7 +275,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1758392027, guid: 48daefb376b5f034292e0c0204e55eec, type: 3}
+  m_Sprite: {fileID: 1923234855, guid: 48daefb376b5f034292e0c0204e55eec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -322,7 +322,7 @@ Transform:
   m_Children:
   - {fileID: 3752121418818798725}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3752121420035014119
 MonoBehaviour:
@@ -398,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 2147483647
   _healthTargetType: 1
+  _invulnerabilityTime: 0
 --- !u!58 &3752121420035014112
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -628,7 +629,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1677613116, guid: 48daefb376b5f034292e0c0204e55eec, type: 3}
+  m_Sprite: {fileID: -284082609, guid: 48daefb376b5f034292e0c0204e55eec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

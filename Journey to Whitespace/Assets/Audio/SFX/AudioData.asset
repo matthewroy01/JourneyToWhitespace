@@ -43,3 +43,9 @@ MonoBehaviour:
     _minPitch: 0.9
     _maxPitch: 1.1
     _letFinishIfLooping: 0
+  - _name: Player Take Damage
+    _clip: {fileID: 8300000, guid: 6ad5a9b7546cacf41b24d3e292665ed8, type: 3}
+    _volume: 0.4
+    _minPitch: 0.9
+    _maxPitch: 1.1
+    _letFinishIfLooping: 0

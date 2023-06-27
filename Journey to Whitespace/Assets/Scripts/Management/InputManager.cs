@@ -14,6 +14,7 @@ namespace Management
         public static event Action ShiftEntered;
         public static event Action ShiftCanceled;
         public static event Action CapsLockPerformed;
+        public static event Action PausePerformed;
 
         private Controls _controls;
         private static Vector2 _mousePosition;
@@ -71,6 +72,14 @@ namespace Management
                 return;
             
             CapsLockPerformed?.Invoke();
+        }
+
+        public void OnPause(InputAction.CallbackContext context)
+        {
+            if (!GetContextTypeMet(context, InputContextType.Started))
+                return;
+            
+            PausePerformed?.Invoke();
         }
 
         private bool GetContextTypeMet(InputAction.CallbackContext context, InputContextType inputContextType)

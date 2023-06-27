@@ -49,5 +49,10 @@ namespace Enemy
             
             _enemies.Add(enemy);
         }
+
+        public List<Enemy> GetEnemies()
+        {
+            return _enemies;
+        }
     }
 }

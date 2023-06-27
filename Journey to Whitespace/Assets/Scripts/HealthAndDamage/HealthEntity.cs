@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
+using MHRUtil.Interfaces;
 using UnityEngine;
 
 namespace HealthAndDamage
 {
-    public class HealthEntity : MonoBehaviour
+    public class HealthEntity : MonoBehaviour, IResettable
     {
         public event Action LostHeath;
         public event Action GainedHealth;
@@ -14,8 +16,10 @@ namespace HealthAndDamage
 
         [SerializeField] private int _maxHealth = 1;
         [SerializeField] private HealthTargetType _healthTargetType;
-        //[SerializeField] private LayerMask _damageLayerMask;
+        [SerializeField] private float _invulnerabilityTime = 0.0f;
         private int _currentHealth;
+        private bool _invulnerable;
+        private Coroutine _invulnerabilityCoroutine;
 
         private void Awake()
         {
@@ -24,9 +28,6 @@ namespace HealthAndDamage
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            // TODO: check layer of collided object?
-            //if (_damageLayerMask == (_damageLayerMask | (1 << other.gameObject.layer)))
-
             DamageEntity damageEntity = other.gameObject.GetComponent<DamageEntity>();
 
             if (damageEntity == null)
@@ -40,6 +41,9 @@ namespace HealthAndDamage
 
         private void TryTakeDamage(DamageEntity damageEntity)
         {
+            if (_invulnerable)
+                return;
+            
             DamageTargetType damageTargetType = damageEntity.DamageTargetType;
 
             switch(_healthTargetType)
@@ -80,6 +84,11 @@ namespace HealthAndDamage
 
         public void TakeDamage(int amount)
         {
+            if (_invulnerabilityTime > 0.0f)
+            {
+                _invulnerabilityCoroutine = StartCoroutine(Invulnerability());
+            }
+            
             AdjustHealth(-amount);
         }
 
@@ -135,6 +144,25 @@ namespace HealthAndDamage
             }
 
             _currentHealth += amount;
+        }
+
+        private IEnumerator Invulnerability()
+        {
+            _invulnerable = true;
+
+            yield return new WaitForSeconds(_invulnerabilityTime);
+            
+            _invulnerable = false;
+        }
+
+        public void Reset()
+        {
+            if (_invulnerabilityCoroutine != null)
+            {
+                StopCoroutine(_invulnerabilityCoroutine);
+            }
+
+            _invulnerable = false;
         }
     }
 }

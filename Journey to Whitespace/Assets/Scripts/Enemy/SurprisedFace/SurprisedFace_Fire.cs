@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Enemy.States
+namespace Enemy.SurprisedFace
 {
     public class SurprisedFace_Fire : EnemyState
     {

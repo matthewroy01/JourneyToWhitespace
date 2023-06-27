@@ -91,6 +91,15 @@ namespace Management
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea5bbdbf-37c0-4bfa-8554-6fb6b9e1213f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -225,6 +234,17 @@ namespace Management
                     ""action"": ""CapsLock"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7cc61caf-f375-45b4-9735-63596678b0fb"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -240,6 +260,7 @@ namespace Management
             m_Default_SecondaryFire = m_Default.FindAction("SecondaryFire", throwIfNotFound: true);
             m_Default_Shift = m_Default.FindAction("Shift", throwIfNotFound: true);
             m_Default_CapsLock = m_Default.FindAction("CapsLock", throwIfNotFound: true);
+            m_Default_Pause = m_Default.FindAction("Pause", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -306,6 +327,7 @@ namespace Management
         private readonly InputAction m_Default_SecondaryFire;
         private readonly InputAction m_Default_Shift;
         private readonly InputAction m_Default_CapsLock;
+        private readonly InputAction m_Default_Pause;
         public struct DefaultActions
         {
             private @Controls m_Wrapper;
@@ -317,6 +339,7 @@ namespace Management
             public InputAction @SecondaryFire => m_Wrapper.m_Default_SecondaryFire;
             public InputAction @Shift => m_Wrapper.m_Default_Shift;
             public InputAction @CapsLock => m_Wrapper.m_Default_CapsLock;
+            public InputAction @Pause => m_Wrapper.m_Default_Pause;
             public InputActionMap Get() { return m_Wrapper.m_Default; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -347,6 +370,9 @@ namespace Management
                     @CapsLock.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCapsLock;
                     @CapsLock.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCapsLock;
                     @CapsLock.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnCapsLock;
+                    @Pause.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPause;
+                    @Pause.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPause;
+                    @Pause.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPause;
                 }
                 m_Wrapper.m_DefaultActionsCallbackInterface = instance;
                 if (instance != null)
@@ -372,6 +398,9 @@ namespace Management
                     @CapsLock.started += instance.OnCapsLock;
                     @CapsLock.performed += instance.OnCapsLock;
                     @CapsLock.canceled += instance.OnCapsLock;
+                    @Pause.started += instance.OnPause;
+                    @Pause.performed += instance.OnPause;
+                    @Pause.canceled += instance.OnPause;
                 }
             }
         }
@@ -385,6 +414,7 @@ namespace Management
             void OnSecondaryFire(InputAction.CallbackContext context);
             void OnShift(InputAction.CallbackContext context);
             void OnCapsLock(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
     }
 }

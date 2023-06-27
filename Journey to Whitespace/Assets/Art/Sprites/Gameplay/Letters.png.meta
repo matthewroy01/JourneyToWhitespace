@@ -111,7 +111,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -131,8 +131,8 @@ TextureImporter:
       name: Letters_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 32
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -152,8 +152,8 @@ TextureImporter:
       name: Letters_2
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
+        x: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -173,8 +173,8 @@ TextureImporter:
       name: Letters_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 96
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -194,8 +194,8 @@ TextureImporter:
       name: Letters_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 128
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -215,8 +215,8 @@ TextureImporter:
       name: Letters_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -236,8 +236,8 @@ TextureImporter:
       name: Letters_6
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -257,8 +257,8 @@ TextureImporter:
       name: Letters_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 64
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -278,8 +278,8 @@ TextureImporter:
       name: Letters_8
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 96
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -299,8 +299,8 @@ TextureImporter:
       name: Letters_9
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 128
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -320,8 +320,8 @@ TextureImporter:
       name: Letters_10
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -333,6 +333,153 @@ TextureImporter:
       bones: []
       spriteID: 42bf4c9065ca8c94fbc2c1438fed3022
       internalID: 1085643417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Letters_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d3728b0fc1b355409094acbaad30e5f
+      internalID: -2061093579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Letters_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03d48ba85f73bdc46ad73ae55e064904
+      internalID: -624772642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Letters_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6989f2beafd4c774ba8a6b58ab6ef8b7
+      internalID: 769172105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Letters_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a9aa77a05f57094cbd2fdd79363bc3c
+      internalID: 824193396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Letters_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0b2b262d410e92459b5f6ac2554aaf6
+      internalID: 509347312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Letters_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dc171d0f19210e45b93f88795c35da0
+      internalID: 435803329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Letters_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 359099db9aafd874680f16aedfa681d6
+      internalID: -1354504195
       vertices: []
       indices: 
       edges: []
@@ -357,8 +504,15 @@ TextureImporter:
       Letters_1: -1873493966
       Letters_4: 1382297896
       Letters_7: 457797062
+      Letters_13: 769172105
+      Letters_11: -2061093579
       Letters_3: 1690003454
+      Letters_15: 509347312
       Letters_8: 208645727
+      Letters_17: -1354504195
+      Letters_16: 435803329
+      Letters_12: -624772642
+      Letters_14: 824193396
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
